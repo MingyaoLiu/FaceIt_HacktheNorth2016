@@ -1,0 +1,190 @@
+<div layout="column" style="height:100%;">
+    <section layout="row" style="height:100%">
+        <md-sidenav flex style="max-width: 250px" class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" md-whiteframe="6">
+            <md-toolbar class="md-accent">
+                <div class="md-toolbar-tools">
+                    <span flex></span>
+                    <md-menu>
+                    <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
+                        <i class="material-icons">color_lens</i>
+                    </md-button>
+                    <md-menu-content width="2">
+                        <md-menu-item ng-repeat="option in themeOptions">
+                        <md-button ng-click="selectTheme($index)">
+                            {{option}}
+                        </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                    </md-menu>
+                    <md-menu>
+                    <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
+                        <i class="material-icons">translate</i>
+                    </md-button>
+                    <md-menu-content width="2">
+                        <md-menu-item ng-repeat="option in langOptions">
+                        <md-button ng-click="selectLanguage(option)">
+                            {{option == 'en' ? 'English' : '简体中文'}}
+                        </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                    </md-menu>
+                    <md-button class="md-icon-button" ng-click="goToPage('welcome')">
+                        <i class="material-icons">home</i>
+                    </md-button>
+                </div>
+            </md-toolbar>
+            <md-content>
+                <md-list flex ng-repeat="Item in appLang.menuCipherItems">
+                    <md-subheader class="md-no-sticky md-primary">{{ Item.name }}</md-subheader>
+                    <md-list-item md-no-ink ng-repeat="subItem in Item.subMenuCipherItems" data-label="{{subItem.link}}" ng-click="goToPage(subItem.link)" ng-class="{activeMenu: isActive('/app/{{subItem.link}}')}" ng-disabled="!subItem.link">
+                        <div class="md-list-item-text" data-label="{{subItem.link}}">
+                            {{ subItem.name }}
+                        </div>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                </md-list>
+            </md-content>
+        </md-sidenav>
+        <md-content flex  layout="column">
+            <md-toolbar class="md-primary">
+                <div class="md-toolbar-tools">
+                    <md-button show-sm hide-gt-sm class="md-icon-button" ng-click="toggleLeft()" aria-label="{{ pageTitle() }}">
+                        <i class="material-icons">menu</i>
+                    </md-button>
+                    <h2>
+                        <span>{{ pageTitle() }}</span>
+                    </h2>
+                    <span flex></span>
+                    <md-button show-xs hide-gt-xs class="md-icon-button" ng-click="toggleRight()">
+                        <i class="material-icons">dashboard</i>
+                        </md-icon>
+                    </md-button>
+                </div>
+            </md-toolbar>
+
+            <md-content md-swipe-right="onSwipeRight()" md-swipe-left="onSwipeLeft()" >
+                <md-subheader class="md-no-sticky">Cipher Options</md-subheader>
+                <md-content ui-view>
+                </md-content>
+                <md-subheader class="md-no-sticky">Encipher/Decipher Box & Saved History</md-subheader>
+                <md-card>
+                    
+                    <md-card-content>
+                        <div flex layout-padding style="word-wrap: break-word;white-space: pre-line;">{{ appDataFields.ReferenceBlock }}</div>
+                    </md-card-content>
+                    <md-card-actions layout="row" layout-align="end center">
+                        <md-button ng-click="saveHistory()" class="md-primary" ng-disabled="!appDataFields.ReferenceBlock">Save</md-button>
+                        <md-button ng-click="copyRBtoCB()" ng-disabled="!appDataFields.ReferenceBlock">{{ appLang.copyCB}}</md-button>
+                    </md-card-actions>
+                </md-card>
+                <md-card ng-repeat="history in appDataFields.historyList">
+                    <md-card-content>
+                        <h2 class="md-title">{{history.time}}</h2>
+                        <div flex layout-padding style="word-wrap: break-word;white-space: pre-line;">{{history.CDATA}}</div>
+                    </md-card-content>
+                    <md-card-actions layout="row" layout-align="end center">
+                        <md-button ng-click="deleteHistory($index)" class="md-warn">delete</md-button>
+                        <md-button ng-click="copyHistoryToCB($index)">{{ appLang.copyCB}}</md-button>
+                    </md-card-actions>
+                </md-card>
+            </md-content>
+
+
+        </md-content>
+        <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="right" md-is-locked-open="$mdMedia('gt-xs')">
+            <div layout="column" flex style="height: 100%">
+                <!--<div layout="row">
+                    <md-button flex class="md-icon-button" ng-click="CBCopyFB()" aria-label="{{ appLang.FBtoCB }}">
+                        <i class="material-icons">arrow_forward</i>
+                    </md-button>
+                    <md-button flex class="md-icon-button" ng-click="FABencipher()" aria-label="{{ appLang.FBtoCB }}">
+                        <i class="material-icons">save</i>
+                    </md-button>
+                    <md-button flex class="md-icon-button" ng-click="CBhistoryList($event)" aria-label="{{ appLang.historyList }}">
+                        <i class="material-icons">history</i>
+                    </md-button>
+                    <md-button flex class="md-icon-button" ng-click="showCharFrequencyDialog($event)" aria-label="{{ appLang.charFreq }}">
+                        <i class="material-icons">assessment</i>
+                    </md-button>
+                    <md-button flex class="md-icon-button" ng-click="CBClear()" aria-label="{{ appLang.clearCB }}">
+                        <i class="material-icons">clear</i>
+                    </md-button>
+                </div>-->
+                <div layout="row">
+                    
+                    <md-button flex class="md-icon-button" ng-click="CBClear()" aria-label="{{ appLang.clearCB }}">
+                        <i class="material-icons">clear</i>
+                    </md-button>
+                    <md-button flex class="md-icon-button" ng-click="undoCBText()" aria-label="{{ appLang.uppercase }}">
+                        <i class="material-icons">undo</i>
+                    </md-button>
+                    <md-button flex class="md-icon-button" ng-click="redoCBText()" aria-label="{{ appLang.lowercase }}">
+                        <i class="material-icons">redo</i>
+                    </md-button>
+                    <md-button flex class="md-icon-button" ng-click="showCharFrequencyDialog($event)" aria-label="{{ appLang.charFreq }}">
+                        <i class="material-icons">assessment</i>
+                    </md-button>
+                    <md-button flex class="md-icon-button" ng-click="CBupperCase()" aria-label="{{ appLang.uppercase }}">
+                        <i class="material-icons">expand_less</i>
+                    </md-button>
+                    <md-button flex class="md-icon-button" ng-click="CBlowerCase()" aria-label="{{ appLang.lowercase }}">
+                        <i class="material-icons">expand_more</i>
+                    </md-button>
+                </div>
+                <div layout="row">
+                    <md-button flex class="md-icon-button" ng-click="showAddSpaceDialog($event)" aria-label="{{ appLang.addSpace }}">
+                        <i class="material-icons">space_bar</i>
+                    </md-button>
+                    <md-button flex class="md-icon-button" ng-click="CBilliminateSpace()">
+                        <md-icon md-svg-src="img/materialsvg/ic_illiminate_space_black_48px.svg" aria-label="{{ appLang.illiminateSpace }}">
+                        </md-icon>
+                    </md-button>
+                    <md-button flex class="md-icon-button" ng-click="CBspaceToParagraph()">
+                        <md-icon md-svg-src="img/materialsvg/ic_spacing_to_new_line_black_48px.svg" aria-label="{{ appLang.spaceToParagraph }}">
+                        </md-icon>
+                    </md-button>
+                    <md-button flex class="md-icon-button" ng-click="CBreverseParagraph()">
+                        <md-icon md-svg-src="img/materialsvg/ic_reverse_single_line_48px.svg" aria-label="{{ appLang.reverseParagraph }}">
+                        </md-icon>
+                    </md-button>
+                    <md-button flex class="md-icon-button" ng-click="CBreverseWholeField()">
+                        <md-icon md-svg-src="img/materialsvg/ic_reverse_whole_field_48px.svg" aria-label="{{ appLang.reverseWhole }}">
+                        </md-icon>
+                    </md-button>
+                </div>
+                <!--<div layout="row">
+                    <md-button flex class="md-icon-button" ng-click="CBupperCase()" aria-label="{{ appLang.uppercase }}">
+                        <i class="material-icons">expand_less</i>
+                    </md-button>
+                    <md-button flex class="md-icon-button" ng-click="CBlowerCase()" aria-label="{{ appLang.lowercase }}">
+                        <i class="material-icons">expand_more</i>
+                    </md-button>
+                    <md-button flex class="md-icon-button" ng-click="showAddSpaceDialog($event)" aria-label="{{ appLang.addSpace }}">
+                        <i class="material-icons">space_bar</i>
+                    </md-button>
+                    <md-button flex class="md-icon-button" ng-click="CBilliminateSpace()">
+                        <md-icon md-svg-src="img/materialsvg/ic_illiminate_space_black_48px.svg" aria-label="{{ appLang.illiminateSpace }}">
+                        </md-icon>
+                    </md-button>
+                    <md-button flex class="md-icon-button" ng-click="CBspaceToParagraph()">
+                        <md-icon md-svg-src="img/materialsvg/ic_spacing_to_new_line_black_48px.svg" aria-label="{{ appLang.spaceToParagraph }}">
+                        </md-icon>
+                    </md-button>
+                    <md-button flex class="md-icon-button" ng-click="CBreverseParagraph()">
+                        <md-icon md-svg-src="img/materialsvg/ic_reverse_single_line_48px.svg" aria-label="{{ appLang.reverseParagraph }}">
+                        </md-icon>
+                    </md-button>
+                    <md-button flex class="md-icon-button" ng-click="CBreverseWholeField()">
+                        <md-icon md-svg-src="img/materialsvg/ic_reverse_whole_field_48px.svg" aria-label="{{ appLang.reverseWhole }}">
+                        </md-icon>
+                    </md-button>
+                </div>-->
+
+                <md-input-container flex layout="column">
+                    <label>{{ appLang.codeblockplaceholder }}</label>
+                    <textarea code-block-directive flex ng-model="appDataFields.CodeBlock" md-no-autogrow columns="1" class=" ng-untouched" ng-trim="false" aria-multiline="true" style="max-height: 100%; overflow-y:scroll;"></textarea>
+                </md-input-container>
+            </div>
+        </md-sidenav>
+    </section>
+</div>

@@ -1,0 +1,7 @@
+<div layout-padding>
+<md-switch md-no-ink class="md-primary" ng-model="qwertCoodData.qwertCood_direct" aria-label="{{appLang.qwertCood}}" ng-change="exeCipher()">
+		{{appLang.convertTo}}
+		<span ng-if="qwertCoodData.qwertCood_direct">{{appLang.alphaToCood}}</span>
+		<span ng-if="!qwertCoodData.qwertCood_direct">{{appLang.coodToAlpha}}</span>
+	</md-switch>
+</div>

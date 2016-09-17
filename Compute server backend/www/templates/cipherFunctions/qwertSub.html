@@ -1,0 +1,32 @@
+<div layout-padding>
+	<md-content layout="row">
+	<md-checkbox md-no-ink class="md-primary" flex="40" ng-model="qwertSubData.qwertSub_onlyAlphabet" aria-label="{{ appLang.qwertSub }}" ng-change="exeCipher()">
+		<span style="line-height:38px;">{{ appLang.onlyAlpha }}</span>
+	</md-checkbox>
+	<md-switch md-no-ink class="md-primary" ng-model="qwertSubData.qwertSub_type" aria-label="{{ appLang.qwertSub }}" ng-change="exeCipher()">
+		Type : 
+		<span ng-if="qwertSubData.qwertSub_type">{{ appLang.sameRow }}</span>
+		<span ng-if="!qwertSubData.qwertSub_type">{{ appLang.qweToBNM }}</span>
+	</md-switch>
+	</md-content>
+	<md-content layout="row">
+		<md-checkbox md-no-ink class="md-primary" flex="40" ng-model="qwertSubData.qwertSub_all" aria-label="{{ appLang.qwertSub }}" ng-change="exeCipher()">
+			<span style="line-height:38px;">{{ appLang.displayAll }}</span>
+		</md-checkbox>
+		<md-switch md-no-ink class="md-primary" ng-disabled="qwertSubData.qwertSub_all" flex ng-model="qwertSubData.qwertSub_direct" aria-label="{{ appLang.qwertSub }}" ng-change="exeCipher()">
+			{{ appLang.shift }}
+			<span ng-if="qwertSubData.qwertSub_direct"> {{ appLang.toRight }}</span>
+			<span ng-if="!qwertSubData.qwertSub_direct">{{ appLang.toLeft }}</span>
+		</md-switch>
+	</md-content>
+	<md-content layout="row">
+		<div flex="15" layout layout-align="center center">
+	        <span>{{ appLang.offset }}</span>
+	    </div>
+		<md-slider md-no-ink flex ng-model="qwertSubData.qwertSub_offset" ng-disabled="qwertSubData.qwertSub_all" class="md-primary" step="1" min="1" max="12" aria-label="{{ appLang.qwertSub }}" ng-change="exeCipher()">
+		</md-slider>
+		<div flex="10" layout layout-align="center center">
+	        <span>{{ qwertSubData.qwertSub_offset }}</span>
+	    </div>
+	</md-content>
+</div>

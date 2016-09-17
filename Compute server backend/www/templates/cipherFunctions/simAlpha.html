@@ -1,0 +1,11 @@
+<div layout-padding>
+    <md-switch class="md-primary" md-no-ink ng-model="simAlphaData.simAlpha_order" aria-label="{{ appLang.simAlpha }}" ng-change="exeCipher()">
+        {{ appLang.convertTo }}
+        <span ng-if="simAlphaData.simAlpha_order">{{appLang.numToAlpha}}</span>
+        <span ng-if="!simAlphaData.simAlpha_order">{{appLang.alphaToNum}}</span>
+    </md-switch>
+    <md-radio-group md-no-ink flex ng-model="simAlphaData.simAlpha_mode" layout="row" aria-label="{{ appLang.simAlpha }}" ng-change="exeCipher()">
+        <md-radio-button flex value="mode12" class="md-primary">{{ appLang.mode }} {{appLang.mode01_26}}</md-radio-button>
+        <md-radio-button flex value="mode0102" class="md-primary">{{ appLang.mode }} {{appLang.mode1_26}} </md-radio-button>
+    </md-radio-group>
+</div>

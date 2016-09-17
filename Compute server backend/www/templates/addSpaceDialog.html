@@ -1,0 +1,32 @@
+<md-dialog aria-label="add space between characters">
+  <form>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>{{$root.appLang.addSpace}}</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="cancel()">
+        <i class="material-icons">clear</i>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content>
+    <div layout-padding>
+    	<md-input-container flex="100">
+          <label>{{$root.appLang.betweenAddSpace}}</label>
+          <input type="number" ng-model="charnum">
+        </md-input-container>
+        <md-slider ng-model="charnum" flex class="md-primary" md-discrete ng-model="rating2" step="1" min="1" max="10" aria-label="Add Space">
+        </md-slider>
+    </div>
+  </md-dialog-content>
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button ng-click="answer('cancel')" class="md-primary">
+      {{$root.appLang.cancel}}
+    </md-button>
+    <md-button ng-click="answer(charnum)" class="md-primary">
+      {{$root.appLang.confirm}}
+    </md-button>
+  </div>
+  </form>
+</md-dialog>

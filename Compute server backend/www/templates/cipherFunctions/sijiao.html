@@ -1,0 +1,7 @@
+<div layout-padding>
+<md-switch class="md-primary" md-no-ink ng-model="sijiaoData.sijiao_order" aria-label="{{ appLang.siJiao }}" ng-change="exeCipher()">
+		{{ appLang.convertTo }}
+		<span ng-if="sijiaoData.sijiao_order">{{ appLang.alphaToNum }}</span>
+		<span ng-if="!sijiaoData.sijiao_order">{{ appLang.numToAlpha }} (N)</span>
+	</md-switch>
+</div>

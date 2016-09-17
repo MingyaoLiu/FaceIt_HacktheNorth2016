@@ -1,0 +1,6 @@
+<!-- 	<input ng-model="simTraData.simtra_order" /> -->
+<div layout-padding>
+		<md-switch class="md-primary" md-no-ink ng-model="pinyinData.pinyin_accent" aria-label="{{appLang.pinYin}}" ng-change="exeCipher()">
+		{{ appLang.convertTo }}<span ng-if="pinyinData.pinyin_accent">{{appLang.haveAccent}}</span><span ng-if="!pinyinData.pinyin_accent">{{appLang.noAccent}}</span>
+		</md-switch>
+</div>

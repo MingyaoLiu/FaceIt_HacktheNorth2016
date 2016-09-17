@@ -1,0 +1,7 @@
+<div layout-padding>
+<md-switch class="md-primary" ng-model="simTraData.simtra_order" aria-label="{{ appLang.simTra }}" ng-change="exeCipher()">
+		{{ appLang.convertTo }}
+		<span ng-if="simTraData.simtra_order"> {{ appLang.simToTra }}</span>
+		<span ng-if="!simTraData.simtra_order">{{ appLang.traToSim }}</span>
+	</md-switch>
+</div>

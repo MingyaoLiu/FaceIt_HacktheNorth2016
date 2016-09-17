@@ -1,0 +1,1 @@
+angular.module("CipherX.controllers").controller("PigPenCtrl",["$scope","$rootScope","$stateParams","cfpLoadingBar",function(e,o,a,n){function p(){o.appDataFields.ReferenceBlock=o.appDataFields.CodeBlock}o.pageTitle=function(){return o.appLang.pigpen},o.exeCipher=function(){p()},o.exeCipher(),e.addPigpenToCB=function(e){o.appDataFields.CodeBlock+=" "+e,p()}}]);

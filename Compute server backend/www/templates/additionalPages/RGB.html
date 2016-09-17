@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>RGB</title>
+<style type="text/css">
+html{
+	background-color: #999;
+}
+body {
+	margin: 0 auto;
+	width: 1000px;
+	margin-top: 30px;
+}
+.clr {
+	clear: both;
+}
+h1 {
+	font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+	font-size: 22px;
+}
+h2 {
+	font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+	font-size: 18px;
+	width: 20px;
+	float: left;
+}
+label {
+	font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+	font-size: 16px;
+}
+input {
+	width: 25px;
+	margin-right: 20px;
+	margin-left: 10px;
+}
+.header {
+}
+.btn {
+	width: 80px;
+}
+.main {
+}
+.container {
+	float: left;
+	margin-bottom: 20px;
+}
+.block {
+	margin-left: 30px;
+	float: left;
+	background-color: #CCC;
+}
+.row {
+	background-color: #666;
+}
+.item {
+	width: 20px;
+	height: 20px;
+	margin: 3px;
+	float: left;
+	background-color: #000;
+}
+.red { background-color: #F00; }
+.green { background-color: #0F0; }
+.blue { background-color: #00F; }
+.red-green { background-color: #FF0; }
+.green-blue { background-color: #0FF; }
+.red-blue { background-color: #F0F; }
+.white { background-color: #FFF; }
+.black { background-color: #000; }
+
+</style>
+<script type="text/javascript">
+	$(function() {
+		update();
+		
+		$("input").change(function() {
+			update();
+        });
+    });
+	
+	function update() {
+		$(".container").empty();
+			
+		block = $("#xb").val();
+		row = $("#xr").val();
+		items = $("#xi").val();
+		for(i=0;i<block;i++) {
+			$(".container").append("<div class='block'></div>");
+		}
+		for(j=0;j<row;j++) {
+			$(".block").append("<div class='row'></div>");
+		}
+		for(k=0;k<items;k++) {
+			$(".row").append("<div class='item'></div>");
+		}
+		
+		setItems();	
+	}
+	
+	function setItems() {
+		colors = ["black", "red", "green", "blue", "red-green", "green-blue", "red-blue", "white"];
+		arr = new Array();
+		
+		$("#cipher .item").each(function(index, element) {
+			arr[index] = 0;
+		})
+		.click(function(e) {
+			$("#test").text(arr);
+			n = $("#cipher .item").index($(this));
+			a = arr[n];
+			$(this).removeClass(colors[a%8]).addClass(colors[a++%8+1]);
+			arr[n] = a;
+			
+			$("#R .item:eq("+n+")").removeClass("red");
+			$("#G .item:eq("+n+")").removeClass("green");
+			$("#B .item:eq("+n+")").removeClass("blue");
+			
+			if (a==1 || a==4 || a==6 || a==7)
+				$("#R .item:eq("+n+")").addClass("red");
+			if (a==2 || a==4 || a==5 || a==7)
+				$("#G .item:eq("+n+")").addClass("green");
+			if (a==3 || a==5 || a==6 || a==7)
+				$("#B .item:eq("+n+")").addClass("blue");
+        });
+	}
+</script>
+</head>
+
+<body>
+    <div class="header">
+        <label>Block:<input type="text" id="xb" value="3" /></label>
+        <label>Rows:<input type="text" id="xr" value="3" /></label>
+        <label>Columns:<input type="text" id="xi" value="3" /></label>
+    </div>
+    
+    <div class="main">   
+        <h1>Ciphertext</h1>
+        <h2></h2>
+        <div id="cipher" class="container"></div>
+    </div>
+    <div class="clr"></div>
+    
+    <div class="main">
+        <h1>Plaintext</h1>
+        <div>
+            <h2>R</h2>
+            <div id="R" class="container"></div>
+            <div class="clr"></div>
+            
+            <h2>G</h2>
+            <div id="G" class="container"></div>
+            <div class="clr"></div>
+            
+            <h2>B</h2>
+            <div id="B" class="container"></div>
+            <div class="clr"></div>
+        </div>
+    </div>
+</body>
+</html>

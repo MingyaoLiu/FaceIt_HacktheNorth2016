@@ -1,0 +1,75 @@
+<md-dialog aria-label="{{$root.appLang.charFreq}}">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>{{$root.appLang.charFreq}}</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="$parent.closeModal()" aria-label="{{appLang.close}}">
+                    <i class="material-icons">clear</i>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <md-content layout-padding>
+                
+                <div layout="row" show-xs hide-gt-xs>
+                    <div class="textAlignToCenter" flex>
+                        {{$root.appLang.letter}}
+                    </div>
+                    <div class="textAlignToCenter" flex>
+                        {{$root.appLang.count}}
+                    </div>
+                    <div class="textAlignToCenter" flex>
+                        {{$root.appLang.percent}}
+                    </div>
+
+                </div>
+                <div layout="column" layout-gt-sm="row" flex>
+                
+                    <div layout="column" flex ng-repeat="eachListcharFreq in charFreq" style="min-width:250px">
+                        <div layout="row" hide show-gt-sm>
+                            <div class="textAlignToCenter" flex>
+                                {{$root.appLang.letter}}
+                            </div>
+                            <div class="textAlignToCenter" flex>
+                                {{$root.appLang.count}}
+                            </div>
+                            <div class="textAlignToCenter" flex>
+                                {{$root.appLang.percent}}
+                            </div>
+
+                        </div>
+                        <div hide show-gt-sm></br></div>
+                        <div layout="column" ng-repeat="char in eachListcharFreq">
+                            <div layout="row">
+                                <div class="textAlignToCenter" flex ng-class="{isFreq: char.count, noFreq : !char.count}">
+                                    {{charList[$parent.$index][$index]}}
+                                </div>
+                                <div class="textAlignToCenter" flex ng-class="{isFreq: char.count, noFreq : !char.count}">
+                                    {{char.count}}
+                                </div>
+                                <div class="textAlignToCenter" flex ng-class="{isFreq: char.count, noFreq : !char.count}">
+                                    {{char.percent}}%
+                                </div>
+                                <md-divider hide show-gt-sm></md-divider>
+                            </div>
+                            <md-divider></md-divider>
+                        </div>
+                    </div>
+
+
+                </div>
+            </md-content>
+
+        </md-dialog-content>
+        <!--   <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button ng-click="answer('not useful')" class="md-primary">
+     cancel
+    </md-button>
+    <md-button ng-click="answer('useful')" class="md-primary">
+      confirm
+    </md-button>
+  </div> -->
+    </form>
+</md-dialog>

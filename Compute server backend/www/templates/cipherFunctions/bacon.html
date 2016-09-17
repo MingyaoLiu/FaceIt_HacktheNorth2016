@@ -1,0 +1,11 @@
+<div layout-padding>
+<md-switch class="md-primary" md-no-ink ng-model="baconData.bacon_order" aria-label="{{appLang.bacon}}" ng-change="exeCipher()">
+		{{ appLang.convert }}
+	<span ng-if="baconData.bacon_order">{{appLang.charToBacon}}</span>
+	<span ng-if="!baconData.bacon_order">{{appLang.baconToChar}}</span>
+</md-switch>
+<md-radio-group md-no-ink flex ng-model="baconData.bacon_mode" layout="row" aria-label="{{appLang.bacon}}" ng-change="exeCipher()">
+	<md-radio-button flex value="normal" class="md-primary">{{ appLang.mode }} {{appLang.mode_normal}}</md-radio-button>
+	<md-radio-button flex value="ijuv" class="md-primary">{{ appLang.mode }} {{appLang.mode_i_j_u_v}} </md-radio-button>
+</md-radio-group>
+</div>

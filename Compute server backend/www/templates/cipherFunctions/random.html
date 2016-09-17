@@ -1,0 +1,16 @@
+<div layout-padding>
+    <div layout="row" layout-wrap>
+        <md-input-container flex="20" ng-repeat="$index in alpha" class="md-primary" style="padding-bottom: 2px">
+            <label>{{ alpha[$index].toUpperCase(); }}</label>
+            <input ng-model="subs[$index]" aria-label="sub_{{ $index }}" style="text-transform: uppercase;" />
+        </md-input-container>
+    </div>
+    <div class="md-primary">
+        {{ appLang.remainLetter }} <br/>{{ remainBlock }}
+    </div>
+    <div layout="row" layout-align="end start">
+        <md-button md-no-ink class="md-fab md-primary" aria-label="reset" ng-click="reset()">
+            <md-icon md-svg-src="img/materialsvg/ic_clear_white_48px.svg"></md-icon>
+        </md-button>
+    </div>
+</div>

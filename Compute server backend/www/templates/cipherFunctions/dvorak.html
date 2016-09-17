@@ -1,0 +1,7 @@
+<div layout-padding>
+<md-switch md-no-ink class="md-primary" ng-model="dvorakData.dvorak_direct" aria-label="{{appLang.dvorak}}" ng-change="exeCipher()">
+		{{appLang.convertTo}}
+		<span ng-if="dvorakData.dvorak_direct">{{appLang.qweToDvo}}</span>
+		<span ng-if="!dvorakData.dvorak_direct">{{appLang.dvoToQwe}}</span>
+	</md-switch>
+</div>

@@ -1,0 +1,14 @@
+<div layout-padding>
+  <div layout="row">
+    <md-switch class="md-primary" md-no-ink flex="33" ng-model="vgnData.vgn_order" aria-label="{{ appLang.vigenere }}" ng-change="exeCipher()">
+      <span ng-if="vgnData.vgn_order"> {{ appLang.decrypt }}</span>
+      <span ng-if="!vgnData.vgn_order">{{ appLang.encrypt }}</span>
+    </md-switch>
+
+    <md-input-container flex class="md-default-theme" style="padding-bottom: 18px">
+      <label>{{ appLang.key }}</label>
+      <input ng-model="KeyBlock" ng-change="exeCipher()"/>
+    </md-input-container>
+  </div>
+  </div>
+

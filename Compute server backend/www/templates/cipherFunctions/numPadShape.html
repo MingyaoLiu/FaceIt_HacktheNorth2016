@@ -1,0 +1,11 @@
+<div layout-padding>
+	<md-radio-group md-no-ink flex ng-model="numPadShapeData.numPadShape_type" layout="row" aria-label="{{appLang.numPadShape}}" ng-change="exeCipher()">
+		<md-radio-button flex value="regular" class="md-primary">{{appLang.pc}}</md-radio-button>
+		<md-radio-button flex value="cellphone" class="md-primary">{{appLang.cell}}</md-radio-button>
+	</md-radio-group>
+	<md-switch md-no-ink class="md-primary" ng-model="numPadShapeData.numPadShape_direct" aria-label="{{appLang.numPadShape}}" ng-change="exeCipher()">
+		Direction : 
+		<span ng-if="numPadShapeData.numPadShape_direct">{{appLang.alphaToNum}}</span>
+		<span ng-if="!numPadShapeData.numPadShape_direct">{{appLang.numToAlpha}}</span>
+	</md-switch>
+</div>

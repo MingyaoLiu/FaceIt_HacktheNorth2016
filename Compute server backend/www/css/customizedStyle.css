@@ -1,0 +1,166 @@
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+  font-weight: 400;
+    src: url('../assets/fonts/MaterialIcons-Regular.woff2') format('woff2'),
+       url('../assets/fonts/MaterialIcons-Regular.woff') format('woff'),
+       url('../assets/fonts/MaterialIcons-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'PigpenRegular';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../assets/fonts/pigpen.woff') format('woff'),
+         url('../assets/fonts/pigpen.ttf') format('truetype'),
+         url('../assets/fonts/pigpen.eot') format('embedded-opentype'),
+         url('../assets/fonts/pigpen.svg#PigpenRegular') format('svg');
+}
+@font-face {
+    font-family: 'AnonymousPro';
+    src: url('../assets/fonts/Anonymous Pro.ttf') format('truetype');
+}
+/***********
+char freq
+***********/
+.isFreq {
+  color: black;
+  font-weight: 600;
+}
+.noFreq {
+  color: grey;
+}
+/********************
+active menu
+**********************/
+.active {
+  color: orange;
+}
+.activeMenu {
+  background-color: #EFEFEF;
+  
+}
+.activeMenu button {
+  font-weight: 600;
+}
+/*********************
+Material Angular Library Fix
+***********************/
+/*md-card>img {
+  height : auto !important
+}*/
+md-sidenav {
+  max-width: 320px;
+}
+.md-button.md-accent.md-raised:not([disabled]):hover {
+    background-color: orange;
+  }
+
+/*******************
+Left Menu
+******************/
+.selectedSref i {
+  color : orange;
+}
+.selectedSref p {
+  color : orange;
+}
+
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+/* Rules for sizing the icon. */
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+
+
+/* text align to center for title etc */
+.textAlignToCenter {
+  text-align: center;
+}
+
+/* Have to set height explicity on ui-view 
+to prevent collapsing during animation*/
+/*[ui-view]{
+ height: 100%; 
+}*/
+
+.ui-view-container {
+  position: relative;
+}
+
+[ui-view].ng-enter, [ui-view].ng-leave {
+  -webkit-transition:all .5s ease-in-out;
+	-moz-transition:all .5s ease-in-out;
+	-o-transition:all .5s ease-in-out;
+	transition:all .5s ease-in-out;
+}
+
+[ui-view].ng-enter {
+  opacity: 0;
+}
+
+[ui-view].ng-enter-active {
+  opacity: 1;
+}
+
+[ui-view].ng-leave {
+  display:block;
+  padding-left: 0px;  
+}
+
+[ui-view].ng-leave-active {
+  display: none;
+  padding-left: 100px;
+}
+
+/*******************
+Old code
+*******************/
+
+button, select, html, textarea, input {
+  font-family: AnonymousPro;
+}
+md-bottom-sheet .md-subheader {
+  font-family: AnonymousPro;
+}
+html {
+}
+body {
+  font-family: AnonymousPro;
+  font-weight: 500;
+  
+}
+

@@ -1,0 +1,7 @@
+<div layout-padding>
+	<md-switch class="md-primary" md-no-ink ng-model="zhuyinData.zhuyin_order" aria-label="{{ appLang.zhuYin }}" ng-change="exeCipher()">
+		{{ appLang.convertTo }}
+		<span ng-if="zhuyinData.zhuyin_order">{{ appLang.charToZhuYin }}</span>
+		<span ng-if="!zhuyinData.zhuyin_order">{{ appLang.zhuYinToChar }} (N)</span>
+	</md-switch>
+</div>
