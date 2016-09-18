@@ -43,11 +43,56 @@ app.post('/calculateDicksForHarambe', function(req, res) {
             }
         )
     });
+});
+app.post('/calculateBigDicksForHarambe1', function(req, res, next) {
+    req.rawBody = [];
+    req.on('data', function(chunk) {
+        req.rawBody.push(chunk);
+    }).on('end', function() {
+        req.rawBody = Buffer.concat(req.rawBody);
+                var options = {
+        url: 'https://api.projectoxford.ai/emotion/v1.0/recognize',
+        headers: {
+            'Content-Type' : 'application/octet-stream',
+            'Ocp-Apim-Subscription-Key' : 'e75859b0571d4c3e8f2e7ff22f1a99d3'
+        },
+        body: req.rawBody
+        }
 
-
+    request.post(options, function(error, response, body){
+        console.log(body);
+        res.json(
+            {
+                "status" : 200,
+                "msg" : body
+            }
+        )
+    });
+    })
 
 });
 
+app.post('/calculateBigDicksForHarambe', function(req, res) {
+
+    var options = {
+        url: 'https://api.projectoxford.ai/emotion/v1.0/recognize',
+        headers: {
+            'Content-Type' : 'application/octet-stream',
+            'Ocp-Apim-Subscription-Key' : 'e75859b0571d4c3e8f2e7ff22f1a99d3'
+        },
+        body: req.rawBody
+    }
+
+    request.post(options, function(error, response, body){
+        console.log(body);
+        res.json(
+            {
+                "status" : 200,
+                "msg" : body
+            }
+        )
+    });
+});
 
 app.listen(port);
 console.log('Cipher X running at ' + port);
