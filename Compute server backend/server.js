@@ -7,6 +7,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var queryString = require('querystring');
+var request = require('request');
 // set up our express application
 app.use(bodyParser.json()); // get information from html forms
 app.use(bodyParser.urlencoded({
@@ -22,10 +23,30 @@ app.get('/', function(req, res) {
         res.sendFile('index.html');
     });
 // Get Emotions Status
-app.get('/calculateDicksForHarambe', function(req, res) {
+app.post('/calculateDicksForHarambe', function(req, res) {
+
+    var options = {
+        url: 'https://api.projectoxford.ai/emotion/v1.0/recognize',
+        headers: {
+            'Content-Type' : 'application/json',
+            'Ocp-Apim-Subscription-Key' : 'e75859b0571d4c3e8f2e7ff22f1a99d3'
+        },
+        json: { 'url' : 'http://www.uni-regensburg.de/Fakultaeten/phil_Fak_II/Psychologie/Psy_II/beautycheck/english/durchschnittsgesichter/m(01-32)_gr.jpg' }
+    }
+
+    request.post(options, function(error, response, body){
+        console.log(body);
+        res.json(
+            {
+                "status" : 200,
+                "msg" : body
+            }
+        )
+    });
 
 
-})
+
+});
 
 
 app.listen(port);
