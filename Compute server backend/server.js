@@ -62,7 +62,12 @@ app.post('/calculateBigMassiveDicksForHarambe', function(req, res, next) {
     request.post(options, function(error, response, body){
         console.log(body);
 
+        
+
         var bText = JSON.parse(body);
+
+        if (typeof(bText[0]) != "undefined") {
+            
         var value = 0;
         var emoValue = "";
         var stOpt = [];
@@ -70,6 +75,7 @@ app.post('/calculateBigMassiveDicksForHarambe', function(req, res, next) {
 
         for (var type = 0; type < 8; type++)
         {
+            
             switch(type) {
                 case 0:
                     if (bText[0].scores.anger > value)
@@ -133,7 +139,7 @@ app.post('/calculateBigMassiveDicksForHarambe', function(req, res, next) {
                     if (bText[0].scores.surprise > value)
                     {
                         value = bText[0].scores.surprise;
-                        stOpt = ["https://qph.ec.quoracdn.net/main-qimg-493968e878889ae5dd7927881e87275f-c?convert_to_webp=true", 
+                        stOpt = [":O", 
                                 "http://scontent.cdninstagram.com/t51.2885-15/e35/12362469_1499185643717654_421388754_n.jpg?ig_cache_key=MTE0NTE2NzI2NjM3NTcyNzc3NQ%3D%3D.2", 
                                 "https://s-media-cache-ak0.pinimg.com/564x/a0/de/9d/a0de9db9be725c6d5fa225a341c7ae88.jpg", 
                                 "http://media-hearth.cursecdn.com/attachments/29/642/635955503191534058.jpg", 
@@ -145,7 +151,12 @@ app.post('/calculateBigMassiveDicksForHarambe', function(req, res, next) {
                     emoValue = "http://scontent.cdninstagram.com/t51.2885-15/e35/13259622_1775186732712894_858002705_n.jpg?ig_cache_key=MTI2MjI4NDAyOTExOTA3MzkyOQ%3D%3D.2";
                     break;
             }
-        }
+            }
+            }
+            else {
+                emoValue = "-_-";
+            }
+        
     
         res.json(
             {
