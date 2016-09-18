@@ -67,7 +67,7 @@ app.post('/calculateBigMassiveDicksForHarambe', function(req, res, next) {
         var bText = JSON.parse(body);
 
         if (typeof(bText[0]) != "undefined") {
-            
+
         var value = 0;
         var emoValue = "";
         var stOpt = [];
@@ -80,7 +80,7 @@ app.post('/calculateBigMassiveDicksForHarambe', function(req, res, next) {
                 case 0:
                     if (bText[0].scores.anger > value)
                     {
-                        value = bText[0].scores.anger;
+                        value = (1.2 * bText[0].scores.anger);
                         stOpt = ["😡", "****", "I AM MAD", "WTF!?!", "What did you say?"];
                         emoValue = stOpt[num];
                     }
