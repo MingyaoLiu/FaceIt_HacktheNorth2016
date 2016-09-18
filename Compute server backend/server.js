@@ -65,7 +65,7 @@ app.post('/calculateBigMassiveDicksForHarambe', function(req, res, next) {
         var bText = JSON.parse(body);
         var value = 0;
         var emoValue = "";
-        var stOpt = ["", "", "", "", ""];
+        var stOpt = [];
         var num = Math.floor(Math.random() * 5);
 
         for (var type = 0; type < 8; type++)
@@ -83,7 +83,7 @@ app.post('/calculateBigMassiveDicksForHarambe', function(req, res, next) {
                     if (bText[0].scores.contempt > value)
                     {
                         value = bText[0].scores.contempt;
-                        stOpt = ["😕", "I'm Salty", "WHAT?", "...", "Ugh..."];
+                        stOpt = ["😕", "I'm Salty", "smh smh", "...", "Ugh..."];
                         emoValue = stOpt[num];
                     }
                     break;
@@ -91,26 +91,30 @@ app.post('/calculateBigMassiveDicksForHarambe', function(req, res, next) {
                     if (bText[0].scores.disgust > value)
                     {
                         value = bText[0].scores.disgust;
-                        emoValue = "😤";
+                        stOpt = ["😤", "UGH! That was rough", "WHAT?!?", "MANnnnn", "WTH"];
+                        emoValue = stOpt[num];
                     }
                     break;
                 case 3:
                     if (bText[0].scores.fear > value)
                     {
                         value = bText[0].scores.fear;
-                        emoValue = "😫";
+                        stOpt = ["😫", "UGH! That was rough", "WHAT?!?", "MANnnnn", "Take a Hike"];
+                        emoValue = stOpt[num];
                     }
                     break;
                 case 4:
                     if (bText[0].scores.happiness > value)
                     {
                         value = bText[0].scores.happiness;
-                        emoValue = "😁LOL";
+                        stOpt = ["😁", "LOL", "LMAO", "LAWL", "HAHAHA"];
+                        emoValue = stOpt[num];
                     }
                     break;
                 case 5:
                     if (bText[0].scores.neutral > value)
                     {
+                        value = bText[0].scores.neutral;
                         stOpt = ["🙂", "Ok.", "That is fine", "-_-", "Great"];
                         emoValue = stOpt[num];
                     }
@@ -119,22 +123,30 @@ app.post('/calculateBigMassiveDicksForHarambe', function(req, res, next) {
                     if (bText[0].scores.sadness > value)
                     {
                         value = bText[0].scores.sadness;
-                        emoValue = "😢";
+                        stOpt = ["😢", "I'm feeling aweful", 
+                                "https://static-cdn.jtvnw.net/jtv_user_pictures/twitchconbiblethump-profile_image-aebd2d4c1d7c59f1-300x300.png", 
+                                "Dang...", "Sigh..."];
+                        emoValue = stOpt[num];
                     }
                     break;
                 case 7:
                     if (bText[0].scores.surprise > value)
                     {
                         value = bText[0].scores.surprise;
-                        emoValue = "😮";
+                        stOpt = ["https://qph.ec.quoracdn.net/main-qimg-493968e878889ae5dd7927881e87275f-c?convert_to_webp=true", 
+                                "http://scontent.cdninstagram.com/t51.2885-15/e35/12362469_1499185643717654_421388754_n.jpg?ig_cache_key=MTE0NTE2NzI2NjM3NTcyNzc3NQ%3D%3D.2", 
+                                "https://s-media-cache-ak0.pinimg.com/564x/a0/de/9d/a0de9db9be725c6d5fa225a341c7ae88.jpg", 
+                                "http://media-hearth.cursecdn.com/attachments/29/642/635955503191534058.jpg", 
+                                "http://res.cloudinary.com/urbandictionary/image/upload/a_exif,c_fit,h_200,w_200/v1395991705/gjn81wvxqsq6yzcwubok.png"];
+                        emoValue = stOpt[num];
                     }
                     break;
                 default:
-                    console.log("error");
+                    emoValue = "http://scontent.cdninstagram.com/t51.2885-15/e35/13259622_1775186732712894_858002705_n.jpg?ig_cache_key=MTI2MjI4NDAyOTExOTA3MzkyOQ%3D%3D.2";
                     break;
             }
         }
-
+    
         res.json(
             {
                 "status" : 200,
