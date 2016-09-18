@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 //Define port (prod is 80)
-var port = process.env.PORT || 80;
+var port = process.env.PORT || 3000;
 // Dev live-reload 
 var livereload = require('livereload');
 //Sending public folder
@@ -21,6 +21,13 @@ app.use(express.static(__dirname + '/www'));
 app.get('/', function(req, res) {
         res.sendFile('index.html');
     });
+// Get Emotions Status
+app.get('/calculateDicksForHarambe', function(req, res) {
+
+
+})
+
+
 app.listen(port);
 console.log('Cipher X running at ' + port);
 exports = module.exports = app;
