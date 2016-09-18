@@ -130,7 +130,7 @@ app.post('/calculateBigMassiveDicksForHarambe', function(req, res, next) {
                     {
                         value = bText[0].scores.sadness;
                         stOpt = ["😢", "I'm feeling aweful", 
-                                "https://static-cdn.jtvnw.net/jtv_user_pictures/twitchconbiblethump-profile_image-aebd2d4c1d7c59f1-300x300.png", 
+                                ":'(", 
                                 "Dang...", "Sigh..."];
                         emoValue = stOpt[num];
                     }
@@ -140,15 +140,15 @@ app.post('/calculateBigMassiveDicksForHarambe', function(req, res, next) {
                     {
                         value = bText[0].scores.surprise;
                         stOpt = [":O", 
-                                "http://scontent.cdninstagram.com/t51.2885-15/e35/12362469_1499185643717654_421388754_n.jpg?ig_cache_key=MTE0NTE2NzI2NjM3NTcyNzc3NQ%3D%3D.2", 
-                                "https://s-media-cache-ak0.pinimg.com/564x/a0/de/9d/a0de9db9be725c6d5fa225a341c7ae88.jpg", 
-                                "http://media-hearth.cursecdn.com/attachments/29/642/635955503191534058.jpg", 
-                                "http://res.cloudinary.com/urbandictionary/image/upload/a_exif,c_fit,h_200,w_200/v1395991705/gjn81wvxqsq6yzcwubok.png"];
+                                "Wow!", 
+                                "WTF!", 
+                                "Oh shit!", 
+                                ":O"];
                         emoValue = stOpt[num];
                     }
                     break;
                 default:
-                    emoValue = "http://scontent.cdninstagram.com/t51.2885-15/e35/13259622_1775186732712894_858002705_n.jpg?ig_cache_key=MTI2MjI4NDAyOTExOTA3MzkyOQ%3D%3D.2";
+                    emoValue = "-_-";
                     break;
             }
             }
