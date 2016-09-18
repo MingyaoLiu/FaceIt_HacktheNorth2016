@@ -44,7 +44,7 @@ app.post('/calculateDicksForHarambe', function(req, res) {
         )
     });
 });
-app.post('/calculateBigDicksForHarambe1', function(req, res, next) {
+app.post('/calculateBigMassiveDicksForHarambe', function(req, res, next) {
     req.rawBody = [];
     req.on('data', function(chunk) {
         req.rawBody.push(chunk);
@@ -61,10 +61,81 @@ app.post('/calculateBigDicksForHarambe1', function(req, res, next) {
 
     request.post(options, function(error, response, body){
         console.log(body);
+
+        var bText = JSON.parse(body);
+        var value = 0;
+        var emoValue = "";
+
+        for (var type = 0; type < 8; type++)
+        {
+            switch(type) {
+                case 0:
+                    if (bText[0].scores.anger > value)
+                    {
+                        value = bText[0].scores.anger;
+                        emoValue = "😡";
+                    }
+                    break;
+                case 1:
+                    if (bText[0].scores.contempt > value)
+                    {
+                        value = bText[0].scores.contempt;
+                        emoValue = "😕";
+                    }
+                    break;
+                case 2:
+                    if (bText[0].scores.disgust > value)
+                    {
+                        value = bText[0].scores.disgust;
+                        emoValue = "😤";
+                    }
+                    break;
+                case 3:
+                    if (bText[0].scores.fear > value)
+                    {
+                        value = bText[0].scores.fear;
+                        emoValue = "😫";
+                    }
+                    break;
+                case 4:
+                    if (bText[0].scores.happiness > value)
+                    {
+                        value = bText[0].scores.happiness;
+                        emoValue = "😁";
+                    }
+                    break;
+                case 5:
+                    if (bText[0].scores.neutral > value)
+                    {
+                        value = bText[0].scores.neutral;
+                        emoValue = "🙂";
+                    }
+                    break;
+                case 6:
+                    if (bText[0].scores.sadness > value)
+                    {
+                        value = bText[0].scores.sadness;
+                        emoValue = "😢";
+                    }
+                    break;
+                case 7:
+                    if (bText[0].scores.surprise > value)
+                    {
+                        value = bText[0].scores.surprise;
+                        emoValue = "😮";
+                    }
+                    break;
+                default:
+                    console.log("error");
+                    break;
+            }
+        }
+
         res.json(
             {
                 "status" : 200,
-                "msg" : body
+                "msg" : body,
+                "text" : emoValue
             }
         )
     });
