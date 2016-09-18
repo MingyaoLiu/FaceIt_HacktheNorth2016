@@ -65,6 +65,8 @@ app.post('/calculateBigMassiveDicksForHarambe', function(req, res, next) {
         var bText = JSON.parse(body);
         var value = 0;
         var emoValue = "";
+        var stOpt = ["", "", "", "", ""];
+        var num = Math.floor(Math.random() * 5);
 
         for (var type = 0; type < 8; type++)
         {
@@ -73,14 +75,16 @@ app.post('/calculateBigMassiveDicksForHarambe', function(req, res, next) {
                     if (bText[0].scores.anger > value)
                     {
                         value = bText[0].scores.anger;
-                        emoValue = "😡";
+                        stOpt = ["😡", "****", "I AM MAD", "😠", "What did you say?"];
+                        emoValue = stOpt[num];
                     }
                     break;
                 case 1:
                     if (bText[0].scores.contempt > value)
                     {
                         value = bText[0].scores.contempt;
-                        emoValue = "😕";
+                        stOpt = ["😕", "I'm Salty", "WHAT?", "...", "Ugh..."];
+                        emoValue = stOpt[num];
                     }
                     break;
                 case 2:
@@ -101,14 +105,14 @@ app.post('/calculateBigMassiveDicksForHarambe', function(req, res, next) {
                     if (bText[0].scores.happiness > value)
                     {
                         value = bText[0].scores.happiness;
-                        emoValue = "😁";
+                        emoValue = "😁LOL";
                     }
                     break;
                 case 5:
                     if (bText[0].scores.neutral > value)
                     {
-                        value = bText[0].scores.neutral;
-                        emoValue = "🙂";
+                        stOpt = ["🙂", "Ok.", "That is fine", "-_-", "Great"];
+                        emoValue = stOpt[num];
                     }
                     break;
                 case 6:
