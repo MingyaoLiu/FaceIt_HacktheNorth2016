@@ -75,7 +75,7 @@ app.post('/calculateBigMassiveDicksForHarambe', function(req, res, next) {
                     if (bText[0].scores.anger > value)
                     {
                         value = bText[0].scores.anger;
-                        stOpt = ["😡", "****", "I AM MAD", "😠", "What did you say?"];
+                        stOpt = ["😡", "****", "I AM MAD", "WTF!?!", "What did you say?"];
                         emoValue = stOpt[num];
                     }
                     break;
